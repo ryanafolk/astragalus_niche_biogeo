@@ -197,6 +197,8 @@ names(trait.vector) <- as.character(row.names(tempfile))
 tree.ploidy <- treedata(tree.reduced, trait.vector)$phy
 res <- FISSE.binary(tree.reduced, trait.vector)
 
+# For biogeography FiSSE some data wrangling was needed. See script niche_conservatism_ancestral_recon.r
+
 
 ####################
 ## How to get marginal relative density of rates

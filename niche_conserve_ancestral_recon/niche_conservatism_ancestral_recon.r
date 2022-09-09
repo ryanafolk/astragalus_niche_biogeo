@@ -78,9 +78,13 @@ aridity <- read.table("./../environmental_data/aridity_index_UNEP.average.csv", 
 colnames(aridity) <- c("species", "aridity")
 aridity <- distinct(aridity, species, .keep_all= TRUE)
 
-biogeo <- read.table("./../biogeography/BIOGEOCODING.formatted.txt", header = FALSE)
+biogeo <- read.table("./../biogeography_manuallycorrected/BIOGEOCODING.formatted.biogeobears.treematched.curated.tsv", header = FALSE)
 colnames(biogeo) <- c("species", "biogeo")
 biogeo <- distinct(biogeo, species, .keep_all= TRUE)
+
+soil <- read.table("./../soil_types/soiltype_mostprobable.mode.fixed.csv", header = FALSE)
+colnames(soil) <- c("species", "soil")
+soil <- distinct(soil, species, .keep_all= TRUE)
 
 combined = merge(bio1, bio2, by = "species")
 combined = merge(combined, bio3, by = "species")
@@ -100,6 +104,7 @@ combined = merge(combined, deciduousbroadleaf, by = "species")
 combined = merge(combined, herbaceous, by = "species")
 combined = merge(combined, aridity, by = "species")
 combined = merge(combined, biogeo, by = "species")
+combined = merge(combined, soil, by = "species")
 
 ###
 # Add taxonomy
@@ -200,9 +205,16 @@ plot(figure, type = "fan", legend=0.7*max(nodeHeights(tree)), fsize=0.07, ftype=
 
 
 
-# Niche conservatism
+###########################
+## Niche conservatism
+###########################
+
+# Bio1
 test = phylosig(tree.reduced, trait.reduced.vector, method = "lambda", test = T)
 test
+
+
+
 
 # Biogeographic correlation -- ask whether clade and biogeography are independent in explaining environment
 
@@ -297,36 +309,9 @@ combined.normalized <- rapply(combined, scale, c("numeric","integer"), how="repl
 combined.normalized$group <- as.factor(combined.normalized$group)
 combined.normalized$call <- as.factor(combined.normalized$call)
 
-res.man <- manova(cbind(bio1, bio2, bio3, bio4, bio7, bio12, bio15, bio17, elevation, nitrogen, carbon, ph, sand, coarsefragment, needleleaf, deciduousbroadleaf, herbaceous, aridity) ~ group*call, data = combined.normalized)
+res.man <- manova(cbind(bio1, bio2, bio3, bio4, bio7, bio12, bio15, bio17, elevation, nitrogen, carbon, ph, sand, coarsefragment, needleleaf, deciduousbroadleaf, herbaceous, aridity) ~ group*call*biogeo, data = combined.normalized)
 summary(res.man, tol = 0, test="Pillai")
 summary.aov(res.man)
-
-# res.lm <- lm(bio1 + bio2 + bio3 + bio4 + bio7 + bio12 + bio15 + bio17 + elevation + nitrogen + carbon + ph + sand + coarsefragment + needleleaf + deciduousbroadleaf + herbaceous + aridity ~ group*call, data = combined.normalized)
-# summary(res.lm)
-
-
-#            Df  Pillai approx F num Df den Df  Pr(>F)    
-#group        7 1.27686   8.2549    126   4662 < 2e-16 ***
-#call         2 0.07614   1.4534     36   1322 0.04136 *  
-#group:call  14 0.43034   1.1857    252   9422 0.02458 *  
-#Residuals  677      
-
-# Repeat on just bio2 bio3
-
-res.man <- manova(cbind(bio2, bio3) ~ group*call, data = combined.normalized)
-summary(res.man, tol = 0, test="Pillai")
-
-#             Df  Pillai approx F num Df den Df Pr(>F)    
-# group        7 0.43696  27.0369     14   1354 <2e-16 ***
-# call         2 0.00296   0.5018      4   1354 0.7344    
-# group:call  14 0.01052   0.2557     28   1354 1.0000    
-# Residuals  677                                          
-# ---
-# Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-
-# This means that both ploidy and clade have independent explanatory power, as does the interaction term. However, specifically bio2 and bio3 must be attributed to group.    
-# summary.aov() shows that the significance of ploidy was for aridity, carbon, and nitrogen
 
 
 
@@ -361,7 +346,7 @@ if(is.ultrametric(tree.reduced)) {
 	tree <- force.ultrametric(tree.reduced, method="extend")
 	}
 
-
+# West Asia vs. all else
 combined.filtered$biogeo_binary <- combined.filtered$biogeo
 combined.filtered$biogeo_binary <- gsub("E", "0", combined.filtered$biogeo_binary)
 combined.filtered$biogeo_binary <- gsub("N", "0", combined.filtered$biogeo_binary)
@@ -382,3 +367,26 @@ res <- FISSE.binary(tree, traits)
 
 pval_1tailed <- min(res$pval, 1-res$pval)
 pval_1tailed
+
+# Americas vs. all else
+combined.filtered$biogeo_binary <- combined.filtered$biogeo
+combined.filtered$biogeo_binary <- gsub("E", "0", combined.filtered$biogeo_binary)
+combined.filtered$biogeo_binary <- gsub("N", "1", combined.filtered$biogeo_binary)
+combined.filtered$biogeo_binary <- gsub("S", "1", combined.filtered$biogeo_binary)
+combined.filtered$biogeo_binary <- gsub("B", "0", combined.filtered$biogeo_binary)
+combined.filtered$biogeo_binary <- gsub("A", "0", combined.filtered$biogeo_binary)
+combined.filtered$biogeo_binary <- gsub("W", "0", combined.filtered$biogeo_binary)
+
+traits <- as.numeric(combined.filtered$biogeo_binary)
+names(traits) <- as.character(combined.filtered$species)
+
+treedata_object <- treedata(tree.reduced, traits)
+tree.fisse <- treedata_object$phy
+
+traits <- traits[tree.fisse$tip.label]
+
+res <- FISSE.binary(tree, traits)
+
+pval_1tailed <- min(res$pval, 1-res$pval)
+pval_1tailed
+
