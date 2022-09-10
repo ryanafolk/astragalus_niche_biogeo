@@ -1,69 +1,3 @@
-lines(Sepal.Width, predict(quadratic_model), col=2)
-lines(iris$Sepal.Width, predict(quadratic_model), col=2)
-lines(order(iris$Sepal.Width), predict(quadratic_model), col=2)
-plot(Sepal.Length ~ Sepal.Width, data = iris)
-lines(order(iris$Sepal.Width), predict(quadratic_model), col=2)
-lines(order(iris$Sepal.Width), predict(quadratic_model), col=1)
-lines(order(iris$Sepal.Width), predict(quadratic_model), col=3)
-order(iris$Sepal.Width)
-iris[order(Sepal.Width)]
-sort(iris$Sepal.Width)
-lines(sort(iris$Sepal.Width), predict(quadratic_model), col=3)
-lines(iris$Sepal.Width, predict(quadratic_model), col=3)
-lines(iris$Sepal.Width, sortpredict(quadratic_model), col=3)
-lines(iris$Sepal.Width, sort(predict(quadratic_model)), col=3)
-plot(Sepal.Length ~ Sepal.Width, data = iris)
-lines(iris$Sepal.Width, sort(predict(quadratic_model)), col=3)
-lines(sort(iris$Sepal.Width), sort(predict(quadratic_model)), col=3)
-lines(sort(iris$Sepal.Width), predict(quadratic_model), col=3)
-logLik(quadratic_model)
-logLik(linear_model)
-aic(linear_model)
-AIC(linear_model)
-AIC(quadratic_model)
-iris
-iris[Species == "virginica"]
-iris[iris$Species == "virginica"]
-iris[Species == "virginica"]
-subset(iris, Species == "virginica")
-plot(Sepal.Length ~ Sepal.Width, data = subset(iris, Species == "virginica"))
-lm(Sepal.Length ~ Sepal.Width, data = subset(iris, Species == "virginica"))
-linear_model = lm(Sepal.Length ~ Sepal.Width, data = subset(iris, Species == "virginica"))
-summary(linear_model)
-quadratic_model = nls(Sepal.Length ~ a*Sepal.Width^2 + b*Sepal.Width + c, subset(iris, Species == "virginica"))
-quadratic_model = nls(Sepal.Length ~ a*Sepal.Width^2 + b*Sepal.Width, subset(iris, Species == "virginica"))
-summary(quadratic_model)
-AIC(quadratic_model)
-AIC(linear_model)
-quadratic_model = lm(Sepal.Length ~ Sepal.Width ^ 2, data = subset(iris, Species == "virginica"))
-quadratic_model = lm(Sepal.Length ~ a*Sepal.Width ^ 2, data = subset(iris, Species == "virginica"))
-specieslist = c("Abarema glauca")
-library(rgbif)#
-library(ridigbio)
-install.packages("rgbif")
-install.packages("ridigbio")
-i="Abarema glauca"
-item_gbif = occ_search(scientificName = i, return = "data", limit = 500, hasCoordinate = TRUE)#
-item_gbif = data.frame(item_gbif)
-library(rgbif)#
-library(ridigbio)
-item_gbif = occ_search(scientificName = i, return = "data", limit = 500, hasCoordinate = TRUE)#
-item_gbif = data.frame(item_gbif)
-item_gbif
-pvalues = c(0.997476872#
-0.031485797#
-0.984244067#
-0.306749874#
-0.97184154#
-0.982925828#
-0.977238895)
-pvalues = c(0.997476872,0.031485797,0.984244067,0.306749874,0.97184154,0.982925828,0.977238895)
-p.adjust(pvalues, method = "hochberg")
-p.adjust(c(0.017994002,0.944351883,0.801066311,0.929023659,0.005998001,0.498500500,0.811729424,0.241252916,0.000666445,0.439186938,0.111296235,0.525158281,0.771076308,0.218593802,0.501166278,0.161946018,0.780406531), method = "hochberg")
-lambda0 = c(0.507879141,0.230922478,0.089255096,0.291888725,0.696246283,0.627637663,0.298789133,0.027805203,0.474730306,0.430472671,0.497233649,0.181496473,0.679515267,0.281539929,0.922308058,0.056986275)#
-#
-lambda1 = c(0.440975978,0.204581765,0.047664797,0.284265221,0.345009996,0.400815858,0.236636827,0.019544397,0.258193853,0.363944378,0.354352189,0.150315475,0.433850642,0.227969818,0.101407766,0.066265643)
-t.test(lambda0, lambda1)
 lambda0koep = c(0.519811827,0.087497253,0.220783859,0.077619697,0.303290145,0.619725824,0.603203658,0.291924089,0.027805203,0.41052384,0.406627265,0.476617734,0.153173397,0.640655832,0.257632363,0.759917207,0.062820644)#
 #
 lambda1koep = c(0.159362578,0.048828789,0.201521762,0.107327492,0.235265044,0.294612644,0.338455424,0.054423224,0.019544397,0.23120251,0.296276799,0.259398221,0.085421415,0.321786921,0.220206054,0.10546503,0.053737727)
@@ -715,7 +649,6 @@ us_ajfreidii", "Astragalus_ajfreidii_ajfreidii", "Astragalus_ajfreidii_brevivexi
 dunculatus", "Astragalus_melanochiton", "Astragalus_molestus", "Astragalus_montis-parrowii", "Astragalus_multiceps", "Astragalus_nepalensis", "Astragalus_nigrivestitus", "Astragalus_nigrocalyx", "Astragalus_oihorensis", "Astragalus_oplites", "Astragalus_parkeri", "Astragalus_parwanicus", "Astragalus_pecten-erinis", "Astragalus_pecten-hystricis", "Astragalus_phalacrophyton", "Astragalus_podlechii", "Astragalus_polyacanthus", "Astragalus_pseudoangustifolius", "Astragalus_psilacanthus", "Astragalus_psilacanthus_psilacanthus", "Astragalus_psilacanthus_pseudopsilocentros", "Astragalus_psilocentros", "Astragalus_raphiodontus", "Astragalus_roschanicus", "Astragalus_rubescens", "Astragalus_sharestanicus", "Astragalus_stenopterus", "Astragalus_strigosostipulatus", "Astragalus_terrestris", "Astragalus_vallis-astoris", "Astragalus_wendelboi", "Astragalus_zanskarensis", "Astragalus_cystocarpus", "Astragalus_darwasicus", "Astragalus_longistipitatus", "Astragalus_mundulus", "Astragalus_ovczinnikovii", "Astragalus_scherem
 etevianus", "Astragalus_insignis", "Astragalus_taschkutanus", "Astragalus_brevialatus", "Astragalus_chrysopterus", "Astragalus_leptophysus", "Astragalus_dalaiensis", "Astragalus_kashmirensis", "Astragalus_lithophilus", "Astragalus_munroi", "Astragalus_venulosus", "Astragalus_venulosus_venulosus", "Astragalus_venulosus_irqensis", "Astragalus_acaulis", "Astragalus_physocalyx")
 length(group_a) - length(setdiff(group_a, tree_taxa))
-combined = merge(combined, biogeo, by = "species")
 library(ape)#
 library(phytools)#
 library(geiger)#
@@ -803,10 +736,258 @@ biogeo <- distinct(biogeo, species, .keep_all= TRUE)#
 soil <- read.table("./../soil_types/soiltype_mostprobable.mode.csv", header = FALSE)#
 colnames(soil) <- c("species", "soil")#
 soil <- distinct(soil, species, .keep_all= TRUE)
-bio1 <- read.csv("./../environmental_data/BIOCLIM_1.average.csv", header = FALSE, stringsAsFactors = FALSE, row.names = NULL, sep = "\t")#
-colnames(bio1) <- c("species", "bio1")#
-bio1 <- distinct(bio1, species, .keep_all= TRUE)
+biogeo <- read.table("./../biogeography_manuallycorrected/BIOGEOCODING.formatted.biogeobears.treematched.curated.txt", header = FALSE)#
+colnames(biogeo) <- c("species", "biogeo")#
+biogeo <- distinct(biogeo, species, .keep_all= TRUE)
+biogeo <- read.table("./../biogeography_original/BIOGEOCODING.formatted.biogeobears.treematched.curated.txt", header = FALSE)
+biogeo <- read.table("./../biogeography_manuallycorrected/BIOGEOCODING.formatted.biogeobears.treematched.curated.tsv", header = FALSE)#
+colnames(biogeo) <- c("species", "biogeo")#
+biogeo <- distinct(biogeo, species, .keep_all= TRUE)
+biogeo <- read.table("./../biogeography_manuallycorrected/BIOGEOCODING.formatted.biogeobears.treematched.curated.tsv", header = FALSE)#
+colnames(biogeo) <- c("species", "biogeo")#
+biogeo <- distinct(biogeo, species, .keep_all= TRUE)
 soil <- read.table("./../soil_types/soiltype_mostprobable.mode.csv", header = FALSE)#
 colnames(soil) <- c("species", "soil")#
 soil <- distinct(soil, species, .keep_all= TRUE)
-soil <- read.table("./../soil_types/soiltype_mostprobable.mode.csv", header = FALSE)
+soil <- read.table("./../soil_types/soiltype_mostprobable.mode.fixed.csv", header = FALSE)#
+colnames(soil) <- c("species", "soil")#
+soil <- distinct(soil, species, .keep_all= TRUE)
+soil <- read.table("./../soil_types/soiltype_mostprobable.mode.fixed.csv", header = FALSE)#
+colnames(soil) <- c("species", "soil")#
+soil <- distinct(soil, species, .keep_all= TRUE)
+soil <- read.table("./../soil_types/soiltype_mostprobable.mode.fixed.csv", header = FALSE)#
+colnames(soil) <- c("species", "soil")#
+soil <- distinct(soil, species, .keep_all= TRUE)
+soil <- read.table("./../soil_types/soiltype_mostprobable.mode.fixed.csv", header = FALSE)#
+colnames(soil) <- c("species", "soil")#
+soil <- distinct(soil, species, .keep_all= TRUE)
+soil <- read.table("./../soil_types/soiltype_mostprobable.mode.fixed.csv", header = FALSE)#
+colnames(soil) <- c("species", "soil")#
+soil <- distinct(soil, species, .keep_all= TRUE)
+soil <- read.table("./../soil_types/soiltype_mostprobable.mode.fixed.csv", header = FALSE)#
+colnames(soil) <- c("species", "soil")#
+soil <- distinct(soil, species, .keep_all= TRUE)
+soil <- read.table("./../soil_types/soiltype_mostprobable.mode.fixed.csv", header = FALSE)#
+colnames(soil) <- c("species", "soil")#
+soil <- distinct(soil, species, .keep_all= TRUE)
+soil <- read.table("./../soil_types/soiltype_mostprobable.mode.fixed.csv", header = FALSE)#
+colnames(soil) <- c("species", "soil")#
+soil <- distinct(soil, species, .keep_all= TRUE)
+soil <- read.table("./../soil_types/soiltype_mostprobable.mode.fixed.csv", header = FALSE)#
+colnames(soil) <- c("species", "soil")#
+soil <- distinct(soil, species, .keep_all= TRUE)
+soil <- read.table("./../soil_types/soiltype_mostprobable.mode.fixed.csv", header = FALSE)#
+colnames(soil) <- c("species", "soil")#
+soil <- distinct(soil, species, .keep_all= TRUE)
+soil <- read.table("./../soil_types/soiltype_mostprobable.mode.fixed.csv", header = FALSE)#
+colnames(soil) <- c("species", "soil")#
+soil <- distinct(soil, species, .keep_all= TRUE)
+soil
+combined = merge(bio1, bio2, by = "species")#
+combined = merge(combined, bio3, by = "species")#
+combined = merge(combined, bio4, by = "species")#
+combined = merge(combined, bio7, by = "species")#
+combined = merge(combined, bio12, by = "species")#
+combined = merge(combined, bio15, by = "species")#
+combined = merge(combined, bio17, by = "species")#
+combined = merge(combined, elevation, by = "species")#
+combined = merge(combined, nitrogen, by = "species")#
+combined = merge(combined, carbon, by = "species")#
+combined = merge(combined, ph, by = "species")#
+combined = merge(combined, sand, by = "species")#
+combined = merge(combined, coarsefragment, by = "species")#
+combined = merge(combined, needleleaf, by = "species")#
+combined = merge(combined, deciduousbroadleaf, by = "species")#
+combined = merge(combined, herbaceous, by = "species")#
+combined = merge(combined, aridity, by = "species")#
+combined = merge(combined, biogeo, by = "species")#
+combined = merge(combined, soil, by = "species")
+head(combined)
+oldworldnames <- read.table("./../astragalus_taxonomy/oldworld_names_final.tsv", header = FALSE, sep = "\t")#
+colnames(oldworldnames) <- c("group", "section", "species")#
+oldworldnames <- distinct(oldworldnames, species, .keep_all= TRUE)#
+oldworldnames$species <- gsub(" ", "_", oldworldnames$species)
+newworldnames <- read.table("./../astragalus_taxonomy/newworld_names_final.tsv", header = FALSE, sep = "\t")#
+colnames(newworldnames) <- c("section", "species", "synonym")#
+newworldnames$group <- "Neoastragalus"#
+newworldnames$species <- gsub(" ", "_", newworldnames$species)#
+newworldnames$section <- gsub("sect. ", "", newworldnames$section)#
+library(stringr)#
+newworldnames$species <- str_extract(newworldnames$species, "[^_]+_[^_]+") # Remove authorities#
+newworldnames <- distinct(newworldnames, species, .keep_all= TRUE)
+newworldnames$synonym <- NULL # not needed, need to match column numbers#
+allnames <- rbind(oldworldnames, newworldnames)#
+allnames$section <- NULL
+combined = merge(combined, allnames, by = "species")
+head(combined)
+DR <- read.csv("./../DR_rates/tip_DR.csv", header = TRUE)#
+DR <- distinct(DR, species, .keep_all= TRUE)#
+combined = merge(combined, DR, by = "species")#
+####
+# Add soil type#
+#
+soil <- read.csv("./../soil_types/soiltype_mostprobable.mode.renamed.csv", header = FALSE, sep = "\t")#
+colnames(soil) <- c("species", "soil")#
+soil <- distinct(soil, species, .keep_all= TRUE)#
+combined = merge(combined, soil, by = "species")#
+####
+# Add ploidy#
+#
+ploidy <- read.csv("./../nquire/ploidy.call.csv", header = TRUE)#
+ploidy <- distinct(ploidy, species, .keep_all= TRUE)#
+combined = merge(combined, ploidy, by = "species")
+library(ape)#
+library(phangorn)#
+library(diversitree)#
+library(geiger)#
+library(phytools)#
+library(stringr)#
+# setwd("/mnt/Botbot/csnsclch/nitfix_pgls_new/fisse")#
+# getwd()#
+#
+source("traitDependent_functions.R") # Get from https://github.com/macroevolution/fisse#
+#
+# Check for ultrametricity and if binary; FiSSE has its own function for ultrametricity but this should be faster and fine with slight precision errors #
+if(is.binary(tree.reduced)) {#
+	print("TRUE")#
+	} else {#
+	tree <- multi2di(tree.reduced)#
+	}#
+#
+if(is.ultrametric(tree.reduced)) {#
+	print("TRUE")#
+	} else {#
+	tree <- force.ultrametric(tree.reduced, method="extend")#
+	}#
+combined.filtered$biogeo_binary <- combined.filtered$biogeo#
+combined.filtered$biogeo_binary <- gsub("E", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("N", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("S", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("B", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("A", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("W", "1", combined.filtered$biogeo_binary)#
+#
+traits <- as.numeric(combined.filtered$biogeo_binary)#
+names(traits) <- as.character(combined.filtered$species)#
+#
+treedata_object <- treedata(tree.reduced, traits)#
+tree.fisse <- treedata_object$phy#
+#
+traits <- traits[tree.fisse$tip.label]#
+#
+res <- FISSE.binary(tree, traits)#
+#
+pval_1tailed <- min(res$pval, 1-res$pval)#
+pval_1tailed
+tree = read.tree("./../dated_trees/astragalus.hybpiper.norogues.originalnames.nosections.optimize.calibrated.no.root.constraint.noplatenames.nodups.tre")#
+is.ultrametric(tree)#
+tree = force.ultrametric(tree, method = "extend")#
+# For phenotypic MDS:#
+# tree = read.tree("intree.dated.crossvalidated.traitmatched.tre")#
+tree <- ladderize(tree)
+trait.vector = combined$bio1#
+names(trait.vector) <- combined$species
+trait.reduced <- treedata(tree, trait.vector)$data#
+trait.reduced.vector <- trait.reduced[,1]#
+tree.reduced <- treedata(tree, trait.vector)$phy
+source("traitDependent_functions.R") # Get from https://github.com/macroevolution/fisse
+if(is.binary(tree.reduced)) {#
+	print("TRUE")#
+	} else {#
+	tree <- multi2di(tree.reduced)#
+	}#
+#
+if(is.ultrametric(tree.reduced)) {#
+	print("TRUE")#
+	} else {#
+	tree <- force.ultrametric(tree.reduced, method="extend")#
+	}
+combined.filtered$biogeo_binary <- combined.filtered$biogeo#
+combined.filtered$biogeo_binary <- gsub("E", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("N", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("S", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("B", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("A", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("W", "1", combined.filtered$biogeo_binary)
+combined %>% filter(biogeo %in% c("W", "E", "N", "S", "B", "A")) -> combined.filtered
+combined.filtered$biogeo_binary <- combined.filtered$biogeo#
+combined.filtered$biogeo_binary <- gsub("E", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("N", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("S", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("B", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("A", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("W", "1", combined.filtered$biogeo_binary)
+traits <- as.numeric(combined.filtered$biogeo_binary)#
+names(traits) <- as.character(combined.filtered$species)#
+#
+treedata_object <- treedata(tree.reduced, traits)#
+tree.fisse <- treedata_object$phy#
+#
+traits <- traits[tree.fisse$tip.label]#
+#
+res <- FISSE.binary(tree, traits)
+pval_1tailed <- min(res$pval, 1-res$pval)#
+pval_1tailed
+combined.filtered$biogeo_binary <- combined.filtered$biogeo#
+combined.filtered$biogeo_binary <- gsub("E", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("N", "1", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("S", "1", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("B", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("A", "0", combined.filtered$biogeo_binary)#
+combined.filtered$biogeo_binary <- gsub("W", "0", combined.filtered$biogeo_binary)#
+#
+traits <- as.numeric(combined.filtered$biogeo_binary)#
+names(traits) <- as.character(combined.filtered$species)#
+#
+treedata_object <- treedata(tree.reduced, traits)#
+tree.fisse <- treedata_object$phy#
+#
+traits <- traits[tree.fisse$tip.label]#
+#
+res <- FISSE.binary(tree, traits)#
+#
+pval_1tailed <- min(res$pval, 1-res$pval)#
+pval_1tailed
+combined$calls <- as.factor(combined$calls)#
+ggplot(combined, aes(x = calls, y = bio2, fill = calls)) + geom_violin(trim = TRUE) + ylim(min(combined$bio2), (max(combined$bio2))) + scale_fill_brewer(palette="BrBG") + theme(legend.position="none") + geom_boxplot(width=0.1, color="black") + theme(axis.text.x = element_text(angle = 45))
+library(ggplot2)
+combined$calls <- as.factor(combined$calls)#
+ggplot(combined, aes(x = calls, y = bio2, fill = calls)) + geom_violin(trim = TRUE) + ylim(min(combined$bio2), (max(combined$bio2))) + scale_fill_brewer(palette="BrBG") + theme(legend.position="none") + geom_boxplot(width=0.1, color="black") + theme(axis.text.x = element_text(angle = 45))
+ggplot(combined, aes(x = calls, y = bio3, fill = calls)) + geom_violin(trim = TRUE) + ylim(min(combined$bio3), (max(combined$bio3))) + scale_fill_brewer(palette="BrBG") + theme(legend.position="none") + geom_boxplot(width=0.1, color="black") + theme(axis.text.x = element_text(angle = 45))
+ggplot(combined, aes(x = calls, y = bio1, fill = calls)) + geom_violin(trim = TRUE) + ylim(min(combined$bio1), (max(combined$bio1))) + scale_fill_brewer(palette="BrBG") + theme(legend.position="none") + geom_boxplot(width=0.1, color="black") + theme(axis.text.x = element_text(angle = 45))
+ggplot(combined, aes(x = calls, y = bio12, fill = calls)) + geom_violin(trim = TRUE) + ylim(min(combined$bio12), (max(combined$bio12))) + scale_fill_brewer(palette="BrBG") + theme(legend.position="none") + geom_boxplot(width=0.1, color="black") + theme(axis.text.x = element_text(angle = 45))
+ggplot(combined, aes(x = calls, y = aridity, fill = calls)) + geom_violin(trim = TRUE) + ylim(min(combined$aridity), (max(combined$aridity))) + scale_fill_brewer(palette="BrBG") + theme(legend.position="none") + geom_boxplot(width=0.1, color="black") + theme(axis.text.x = element_text(angle = 45))
+ggplot(combined, aes(x = calls, y = elevation, fill = calls)) + geom_violin(trim = TRUE) + ylim(min(combined$elevation), (max(combined$elevation))) + scale_fill_brewer(palette="BrBG") + theme(legend.position="none") + geom_boxplot(width=0.1, color="black") + theme(axis.text.x = element_text(angle = 45))
+gplot(combined, aes(x = calls, y = nitrogen, fill = calls)) + geom_violin(trim = TRUE) + ylim(min(combined$nitrogen), (max(combined$nitrogen))) + scale_fill_brewer(palette="BrBG") + theme(legend.position="none") + geom_boxplot(width=0.1, color="black") + theme(axis.text.x = element_text(angle = 45))#
+g
+gplot(combined, aes(x = calls, y = nitrogen, fill = calls)) + geom_violin(trim = TRUE) + ylim(min(combined$nitrogen), (max(combined$nitrogen))) + scale_fill_brewer(palette="BrBG") + theme(legend.position="none") + geom_boxplot(width=0.1, color="black") + theme(axis.text.x = element_text(angle = 45))
+ggplot(combined, aes(x = calls, y = nitrogen, fill = calls)) + geom_violin(trim = TRUE) + ylim(min(combined$nitrogen), (max(combined$nitrogen))) + scale_fill_brewer(palette="BrBG") + theme(legend.position="none") + geom_boxplot(width=0.1, color="black") + theme(axis.text.x = element_text(angle = 45))
+ggplot(combined, aes(x = calls, y = carbon, fill = calls)) + geom_violin(trim = TRUE) + ylim(min(combined$carbon), (max(combined$carbon))) + scale_fill_brewer(palette="BrBG") + theme(legend.position="none") + geom_boxplot(width=0.1, color="black") + theme(axis.text.x = element_text(angle = 45))
+combined.normalized <- rapply(combined, scale, c("numeric","integer"), how="replace")#
+combined.normalized$group <- as.factor(combined.normalized$group)#
+combined.normalized$call <- as.factor(combined.normalized$call)#
+#
+res.man <- manova(cbind(bio1, bio2, bio3, bio4, bio7, bio12, bio15, bio17, elevation, nitrogen, carbon, ph, sand, coarsefragment, needleleaf, deciduousbroadleaf, herbaceous, aridity) ~ group*call, data = combined.normalized)#
+summary(res.man, tol = 0, test="Pillai")#
+summary.aov(res.man)
+res.man <- manova(cbind(bio1, bio2, bio3, bio4, bio7, bio12, bio15, bio17, elevation, nitrogen, carbon, ph, sand, coarsefragment, needleleaf, deciduousbroadleaf, herbaceous, aridity) ~ group*call, data = combined.normalized)#
+summary(res.man, tol = 0, test="Pillai")
+res.man <- manova(cbind(bio1, bio2, bio3, bio4, bio7, bio12, bio15, bio17, elevation, nitrogen, carbon, ph, sand, coarsefragment, needleleaf, deciduousbroadleaf, herbaceous, aridity) ~ group*call*biogeo, data = combined.normalized)#
+summary(res.man, tol = 0, test="Pillai")
+summary.aov(res.man)
+res.man <- manova(cbind(bio1, bio2, bio3, bio4, bio7, bio12, bio15, bio17, elevation, nitrogen, carbon, ph, sand, coarsefragment, needleleaf, deciduousbroadleaf, herbaceous, aridity) ~ group*call*biogeo, data = combined.normalized)#
+summary(res.man, tol = 0, test="Pillai")combined.normalized <- rapply(combined, scale, c("numeric","integer"), how="replace")#
+combined.normalized$biogeo <- as.factor(combined.normalized$biogeo)#
+combined.normalized$group <- as.factor(combined.normalized$group)#
+res.man <- manova(cbind(bio1, bio2, bio3, bio4, bio7, bio12, bio15, bio17, elevation, nitrogen, carbon, ph, sand, coarsefragment, needleleaf, deciduousbroadleaf, herbaceous, aridity) ~ group*biogeo, data = combined.normalized)#
+summary(res.man, tol = 0, test="Pillai")#
+summary.aov(res.man)
+combined.normalized <- rapply(combined, scale, c("numeric","integer"), how="replace")#
+combined.normalized$biogeo <- as.factor(combined.normalized$biogeo)#
+combined.normalized$group <- as.factor(combined.normalized$group)#
+res.man <- manova(cbind(bio1, bio2, bio3, bio4, bio7, bio12, bio15, bio17, elevation, nitrogen, carbon, ph, sand, coarsefragment, needleleaf, deciduousbroadleaf, herbaceous, aridity) ~ group*biogeo, data = combined.normalized)#
+summary(res.man, tol = 0, test="Pillai")#
+summary.aov(res.man)
+summary(res.man, tol = 0, test="Pillai")
+test = phylosig(tree.reduced, trait.reduced.vector, method = "lambda", test = T)
+test
