@@ -1,0 +1,29 @@
+treefile = RAxML_result.rooted.TEST
+smooth = 100
+numsites = 309837
+
+mrca = root_crown Wisteria_sinensis_P077_WG05 Astragalus_duchesnensis_P075_WE12
+min = root_crown 32.22
+max = root_crown 44.82 
+
+mrca = oxytropys_crown Oxytropis_pilosa Oxytropis_parryi
+min = oxytropys_crown 1.3
+max = oxytropys_crown 6.3
+
+mrca = EuAstragalus_crown Astragalus_forrestii_P009_WE07 Astragalus_duchesnensis_P075_WE12
+min = EuAstragalus_crown 11.47
+max = EuAstragalus_crown 16.95
+
+mrca = AstOxy_crown Oxytropis_pilosa Astragalus_duchesnensis_P075_WE12
+min = AstOxy_crown 11.93
+max = AstOxy_crown 20.33
+
+nthreads = 4
+outfile = astragalus.hybpiper.norogues.originalnames.nosections.optimize.calibrated.root.constraint.tre
+
+thorough
+opt = 1
+moredetail
+optad = 1
+moredetailad
+optcvad = 3
