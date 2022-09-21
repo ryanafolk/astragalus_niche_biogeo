@@ -151,7 +151,7 @@ tempfile <- treedata(tree.diversification.ladderized, tempfile)$data
 trait.vector = tempfile[,1]
 names(trait.vector) <- row.names(tempfile)
 edata.subset <- subtreeBAMM(edata_diversification_ladderized, tips = names(trait.vector))
-ploidy_vs_diversification = traitDependentBAMM(edata.subset, trait.vector, 1000, rate = "net diversification", return.full = FALSE, method = "kruskal", logrates = TRUE, two.tailed = TRUE, traitorder = NA, nthreads = 4) 
+chromosomes_vs_diversification = traitDependentBAMM(edata.subset, trait.vector, 1000, rate = "net diversification", return.full = FALSE, method = "kruskal", logrates = TRUE, two.tailed = TRUE, traitorder = NA, nthreads = 4) 
 
 # Chromosome ploidy
 trait.vector <- replace(trait.vector, trait.vector < 14, 0)
@@ -212,7 +212,7 @@ res <- FISSE.binary(tree.reduced, trait.vector)
 
 # Ploidy according to chromosomes, follows above
 # requires binary so we focus on diploid vs. tetraploids
-tempfile = read.csv("ploidy.call.renamed.binary.txt", sep = "\t", row.names=1, header = FALSE)
+tempfile = read.csv("chromosomes_cleaned.txt", sep = "\t", row.names=1, header = FALSE)
 tempfile <- treedata(tree.reduced, tempfile)$data
 tempfile <- na.omit(tempfile)
 trait.vector = as.numeric(tempfile[,1])
