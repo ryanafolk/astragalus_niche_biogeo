@@ -213,6 +213,14 @@ plot(figure, type = "fan", legend=0.7*max(nodeHeights(tree)), fsize=0.07, ftype=
 test = phylosig(tree.reduced, trait.reduced.vector, method = "lambda", test = T)
 test
 
+# Bio4; change the first line to get the rest of the variables
+trait.vector = combined$bio4
+names(trait.vector) <- combined$species
+trait.reduced <- treedata(tree, trait.vector)$data
+trait.reduced.vector <- trait.reduced[,1]
+tree.reduced <- treedata(tree, trait.vector)$phy
+test = phylosig(tree.reduced, trait.reduced.vector, method = "lambda", test = T)
+test
 
 
 
