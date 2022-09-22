@@ -1,0 +1,63 @@
+#########################################################################################################
+#
+# RevBayes ChromEvol
+#
+# Based on examples from the RevBayes ChromEvol tutorial and Rosana Zenil-Ferguson
+######
+##########################################################
+
+# Read in the phylogeny
+phylogeny <-  readBranchLengthTrees("tree.for.chromevol.nex")[1]
+
+# Limit the maximum number of chromosomes by adding 10 to the maximum number in dataset. 
+max_chromo = 58
+
+# Get the chromosome counts from a tab-delimited file. 
+chromo_data = readCharacterDataDelimited(file="chrom.ordered.tsv", stateLabels=(max_chromo + 1), type="NaturalNumbers", delimiter="\t", headers=FALSE)
+
+## Parameters of chromosome change gamma= +1 delta= -1, rho= x2
+gamma_0 ~ dnExponential(1/3) # gains
+delta_0 ~ dnExponential(1/3) # losses
+rho_0 ~ dnExponential(1/3)   # polyploidy
+
+
+#### MCMC moves
+mvi = 0
+mni = 0
+#### In this part we actually move our parameters
+moves[++mvi]= mvScale(gamma_0, lambda=1, weight=2)
+moves[++mvi]= mvScale(delta_0, lambda=1, weight=2)
+moves[++mvi]= mvScale(rho_0, lambda=1, weight=2)
+
+# This is what defines the infinitesimal probability matrix for chromevol
+Q_b:= fnChromosomes(max_chromo, gamma_0, delta_0, rho_0)
+
+
+# We need to calculate the root frequencies (uniform prior distribution)
+long<-(max_chromo + 1)
+root_frequencies_prior <- rep(1/long, long)
+
+
+#### Create the RevBayes object for inference
+
+chromo_ctmc ~ dnPhyloCTMC(Q=Q_b, tree=phylogeny, rootFreq=root_frequencies_prior, type="NaturalNumbers")
+
+#### Fix the data which makes the full model be evaluated
+chromo_ctmc.clamp(chromo_data)
+
+#### MCMC
+mymodel = model(phylogeny) #Wraps everything in a box
+
+## Set up monitors
+monitors[++mni]= mnScreen(printgen=10)
+# Results for estimates of chromosome number change rates are saved here
+monitors[++mni]= mnModel(filename="output/results.log", printgen=10)
+# Ancestral state reconstruction, takes a long time but works
+monitors.append( mnJointConditionalAncestralState(filename="output/ChromEvol_simple_anc_states.log", printgen=10, tree=phylogeny, ctmc=chromo_ctmc, type="NaturalNumbers") )
+
+mymcmc = mcmc(mymodel, monitors, moves)
+mymcmc.run(10000)
+
+anc_state_trace = readAncestralStateTrace("output/ChromEvol_simple_anc_states.log")
+
+ancestralStateTree(phylogeny, anc_state_trace, "output/ChromEvol_simple_final.tree", burnin=0.25, reconstruction="marginal")
