@@ -237,6 +237,13 @@ summary.aov(res.man)
 # summary(res.lm)
 
 
+# Estimate MANOVA effect size
+library(effectsize)
+# Omit bio2 due to rank deficiency
+eta_squared(manova(cbind(bio1, bio3, bio4, bio7, bio12, bio15, bio17, elevation, nitrogen, carbon, ph, sand, coarsefragment, needleleaf, deciduousbroadleaf, herbaceous, aridity) ~ group*biogeo, data = combined.normalized))
+
+
+
 
 
 
