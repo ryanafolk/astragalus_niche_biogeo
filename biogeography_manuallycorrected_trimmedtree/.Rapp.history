@@ -1,0 +1,28 @@
+median(5,6,7)
+median
+median(c(5,6,7))
+median(c(5,6))
+median(c(5.5,7))
+# Load the package (after installation, see above).#
+library(optimx)        #
+library(FD)       # for FD::maxent() (make sure this is up-to-date)#
+library(snow)     # (if you want to use multicore functionality; some systems/R versions prefer library(parallel), try either)#
+library(parallel)#
+library(BioGeoBEARS)
+install.packages("cladoRcpp")
+install.packages("rexpokit")
+devtools::install_github(repo="nmatzke/BioGeoBEARS")
+# Load the package (after installation, see above).#
+library(optimx)        #
+library(FD)       # for FD::maxent() (make sure this is up-to-date)#
+library(snow)     # (if you want to use multicore functionality; some systems/R versions prefer library(parallel), try either)#
+library(parallel)#
+library(BioGeoBEARS)
+install.packages("rlang")
+install.packages("snow")
+# Load the package (after installation, see above).#
+library(optimx)        #
+library(FD)       # for FD::maxent() (make sure this is up-to-date)#
+library(snow)     # (if you want to use multicore functionality; some systems/R versions prefer library(parallel), try either)#
+library(parallel)#
+library(BioGeoBEARS)
