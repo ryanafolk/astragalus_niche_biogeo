@@ -53,11 +53,10 @@ monitors[++mni]= mnScreen(printgen=10)
 # Results for estimates of chromosome number change rates are saved here
 monitors[++mni]= mnModel(filename="output/results.log", printgen=10)
 # Ancestral state reconstruction, takes a long time but works
-monitors.append( mnJointConditionalAncestralState(filename="output/ChromEvol_simple_anc_states.log", printgen=10, tree=phylogeny, ctmc=chromo_ctmc, type="NaturalNumbers") )
+monitors.append( mnJointConditionalAncestralState(filename="output/ChromEvol_simple_anc_states_10k.log", printgen=10, tree=phylogeny, ctmc=chromo_ctmc, type="NaturalNumbers") )
 
 mymcmc = mcmc(mymodel, monitors, moves)
 mymcmc.run(10000)
 
 anc_state_trace = readAncestralStateTrace("output/ChromEvol_simple_anc_states.log")
-
-ancestralStateTree(phylogeny, anc_state_trace, "output/ChromEvol_simple_final.tree", burnin=0.25, reconstruction="marginal")
+ancestralStateTree(phylogeny, anc_state_trace, "output/ChromEvol_simple_final_10k.tree", burnin=0.25, reconstruction="marginal")
