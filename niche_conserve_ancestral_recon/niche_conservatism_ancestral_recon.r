@@ -106,53 +106,6 @@ combined = merge(combined, aridity, by = "species")
 combined = merge(combined, biogeo, by = "species")
 combined = merge(combined, soil, by = "species")
 
-###
-# Add taxonomy
-
-oldworldnames <- read.table("./../astragalus_taxonomy/oldworld_names_final.tsv", header = FALSE, sep = "\t")
-colnames(oldworldnames) <- c("group", "section", "species")
-oldworldnames <- distinct(oldworldnames, species, .keep_all= TRUE)
-oldworldnames$species <- gsub(" ", "_", oldworldnames$species)
-
-newworldnames <- read.table("./../astragalus_taxonomy/newworld_names_final.tsv", header = FALSE, sep = "\t")
-colnames(newworldnames) <- c("section", "species", "synonym")
-newworldnames$group <- "Neoastragalus"
-newworldnames$species <- gsub(" ", "_", newworldnames$species)
-newworldnames$section <- gsub("sect. ", "", newworldnames$section)
-library(stringr)
-newworldnames$species <- str_extract(newworldnames$species, "[^_]+_[^_]+") # Remove authorities
-newworldnames <- distinct(newworldnames, species, .keep_all= TRUE)
-
-newworldnames$synonym <- NULL # not needed, need to match column numbers
-allnames <- rbind(oldworldnames, newworldnames)
-allnames$section <- NULL
-
-combined = merge(combined, allnames, by = "species")
-
-
-###
-# Add diversification
-
-DR <- read.csv("./../DR_rates/tip_DR.csv", header = TRUE)
-DR <- distinct(DR, species, .keep_all= TRUE)
-combined = merge(combined, DR, by = "species")
-
-
-###
-# Add soil type
-
-soil <- read.csv("./../soil_types/soiltype_mostprobable.mode.renamed.csv", header = FALSE, sep = "\t")
-colnames(soil) <- c("species", "soil")
-soil <- distinct(soil, species, .keep_all= TRUE)
-combined = merge(combined, soil, by = "species")
-
-
-###
-# Add ploidy
-
-ploidy <- read.csv("./../nquire/ploidy.call.csv", header = TRUE)
-ploidy <- distinct(ploidy, species, .keep_all= TRUE)
-combined = merge(combined, ploidy, by = "species")
 
 
 
@@ -161,14 +114,15 @@ combined = merge(combined, ploidy, by = "species")
 #######################
 # Ancestral reconstruction
 
-trait.vector = combined$bio1
-names(trait.vector) <- combined$species
+combined.reduced <- distinct(combined, species, .keep_all= TRUE)
 
-tree = read.tree("./../dated_trees/astragalus.hybpiper.norogues.originalnames.nosections.optimize.calibrated.no.root.constraint.noplatenames.nodups.tre")
+trait.vector = combined.reduced$bio1
+names(trait.vector) <- combined.reduced$species
+
+
+tree = read.tree("./../dated_trees/astragalus.hybpiper.norogues.originalnames.nosections.optimize.calibrated.no.root.constraint.noplatenames.nodups.localitymatched.newtrim23.tre")
 is.ultrametric(tree)
 tree = force.ultrametric(tree, method = "extend")
-# For phenotypic MDS:
-# tree = read.tree("intree.dated.crossvalidated.traitmatched.tre")
 tree <- ladderize(tree)
 
 trait.reduced <- treedata(tree, trait.vector)$data
@@ -242,6 +196,55 @@ library(effectsize)
 # Omit bio2 due to rank deficiency
 eta_squared(manova(cbind(bio1, bio3, bio4, bio7, bio12, bio15, bio17, elevation, nitrogen, carbon, ph, sand, coarsefragment, needleleaf, deciduousbroadleaf, herbaceous, aridity) ~ group*biogeo, data = combined.normalized))
 
+
+
+###
+# Add taxonomy
+
+oldworldnames <- read.table("./../astragalus_taxonomy/oldworld_names_final.tsv", header = FALSE, sep = "\t")
+colnames(oldworldnames) <- c("group", "section", "species")
+oldworldnames <- distinct(oldworldnames, species, .keep_all= TRUE)
+oldworldnames$species <- gsub(" ", "_", oldworldnames$species)
+
+newworldnames <- read.table("./../astragalus_taxonomy/newworld_names_final.tsv", header = FALSE, sep = "\t")
+colnames(newworldnames) <- c("section", "species", "synonym")
+newworldnames$group <- "Neoastragalus"
+newworldnames$species <- gsub(" ", "_", newworldnames$species)
+newworldnames$section <- gsub("sect. ", "", newworldnames$section)
+library(stringr)
+newworldnames$species <- str_extract(newworldnames$species, "[^_]+_[^_]+") # Remove authorities
+newworldnames <- distinct(newworldnames, species, .keep_all= TRUE)
+
+newworldnames$synonym <- NULL # not needed, need to match column numbers
+allnames <- rbind(oldworldnames, newworldnames)
+allnames$section <- NULL
+
+combined = merge(combined, allnames, by = "species")
+
+
+###
+# Add diversification
+
+DR <- read.csv("./../DR_rates/tip_DR.csv", header = TRUE)
+DR <- distinct(DR, species, .keep_all= TRUE)
+combined = merge(combined, DR, by = "species")
+
+
+###
+# Add soil type
+
+soil <- read.csv("./../soil_types/soiltype_mostprobable.mode.renamed.csv", header = FALSE, sep = "\t")
+colnames(soil) <- c("species", "soil")
+soil <- distinct(soil, species, .keep_all= TRUE)
+combined = merge(combined, soil, by = "species")
+
+
+###
+# Add ploidy
+
+ploidy <- read.csv("./../nquire/ploidy.call.csv", header = TRUE)
+ploidy <- distinct(ploidy, species, .keep_all= TRUE)
+combined = merge(combined, ploidy, by = "species")
 
 
 
