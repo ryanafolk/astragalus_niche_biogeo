@@ -20,7 +20,7 @@ BioGeoBEARS directory. `biogeo_astragalus.R` is the analysis script, `BIOGEOCODI
 `niche_conservatism_ancestral_recon.r` is the analysis script (also includes niche conservatism tests), `traitDependent_functions.R` is a module from [https://github.com/macroevolution/fisse], *p*-values and other outputs are summarized in `niche_conserve.xlsx` and `MANOVA_results.xlsx`, and `figs` contains plotted figures.
 
 ## dated_trees
-
+Four trees after dating in TreePL (`.tre` extension). Naming convention: "localitymatched" is a version of the tree with taxa excluded that have no occurrence records. "newtrim23" indicates a version of the tree with taxa dropped per the main text and summarized in `trimlist.Mar23.txt`. `astragalus_treepl_config.txt` is the analysis file for TreePL. 
 
 ## DR_rates
 `tip_DR.csv` gives calculated DR rates; `figs` contains figures from outputs comparing DR to other data.
@@ -30,17 +30,13 @@ BioGeoBEARS directory. `biogeo_astragalus.R` is the analysis script, `BIOGEOCODI
 CSVs representing environmental means (soil types in a separate directory).
 
 ## nquire
-
+`ploidy.call.csv` contains calls of ploidy level by nQuire; `ploidy.call.original.csv` is the same but including NitFix plate and well numbers. `figs` contains plotted analysis results.
 
 ## occurrences
 CSVs representing raw occurrences.
 
-
 ## soil_types
 CSVs representing soil types, given both as full names and numerical coding (see `.xlsx` for number-name correspondence).
 
-
 ## tree_quality_control
-
-
-## Tree_with_labels
+Miscellaneous QC. `HybPiper_test_stats.xlsx` contains standard HybPiper quality control output. `astragalus_treeQC.R` is an analysis script for plotting QC data on a tree; `astragalus.wBranchLenghts.outliersremoved.renamed.tre` is the plotting tree; `qc_astragalus_rename.csv` is slightly reformatted QC data for plotting. `figs` contains output figures.
