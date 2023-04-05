@@ -4,7 +4,7 @@ library("BAMMtools")
 
 # Both trait and diversification
 # check convergence
-mcmcout <- read.csv("sax_final_mcmc_out.txt", header=T)
+mcmcout <- read.csv("astrag_mcmc_out.txt", header=T)
 plot(mcmcout$logLik ~ mcmcout$generation)
 # burnin 20% of samples -- should be fine based on plots
 burnstart <- floor(0.2 * nrow(mcmcout))
@@ -23,7 +23,7 @@ post_probs <- table(postburn$N_shifts) / nrow(postburn)
 post_probs
 
 # to compute the posterior odds ratio for (say) two models 
-post_probs["9"] / post_probs["8"] # How much more posterior probability is in 9 shifts than 8
+post_probs["8"] / post_probs["9"] # How much more posterior probability is in 8 shifts than 9
 
 ##Alternatively, we can summarize the posterior distribution of the number of shifts 
 ## using summary methods:
@@ -145,6 +145,16 @@ names(trait.vector) <- row.names(tempfile)
 edata.subset <- subtreeBAMM(edata_diversification_ladderized, tips = names(trait.vector))
 ploidy_vs_diversification = traitDependentBAMM(edata.subset, trait.vector, 1000, rate = "net diversification", return.full = FALSE, method = "kruskal", logrates = TRUE, two.tailed = TRUE, traitorder = NA, nthreads = 4) 
 
+# Ploidy (based on chromosomes)
+tempfile = read.csv("chromosomes_cleaned.txt", sep = "\t", row.names=1, header = FALSE)
+tempfile <- treedata(tree.diversification.ladderized, tempfile)$data
+trait.vector = tempfile[,1]
+names(trait.vector) <- row.names(tempfile)
+trait.vector[trait.vector < 14] = 0
+trait.vector[trait.vector >= 14] = 1
+edata.subset <- subtreeBAMM(edata_diversification_ladderized, tips = names(trait.vector))
+ploidy_vs_diversification = traitDependentBAMM(edata.subset, trait.vector, 1000, rate = "net diversification", return.full = FALSE, method = "kruskal", logrates = TRUE, two.tailed = TRUE, traitorder = NA, nthreads = 4) 
+
 # Chromosomes
 tempfile = read.csv("chromosomes_cleaned.txt", sep = "\t", row.names=1, header = FALSE)
 tempfile <- treedata(tree.diversification.ladderized, tempfile)$data
@@ -152,12 +162,6 @@ trait.vector = tempfile[,1]
 names(trait.vector) <- row.names(tempfile)
 edata.subset <- subtreeBAMM(edata_diversification_ladderized, tips = names(trait.vector))
 chromosomes_vs_diversification = traitDependentBAMM(edata.subset, trait.vector, 1000, rate = "net diversification", return.full = FALSE, method = "kruskal", logrates = TRUE, two.tailed = TRUE, traitorder = NA, nthreads = 4) 
-
-# Chromosome ploidy
-trait.vector <- replace(trait.vector, trait.vector < 14, 0)
-trait.vector <- replace(trait.vector, trait.vector >= 14, 1)
-ploidy_vs_diversification = traitDependentBAMM(edata.subset, trait.vector, 1000, rate = "net diversification", return.full = FALSE, method = "kruskal", logrates = TRUE, two.tailed = TRUE, traitorder = NA, nthreads = 4) 
-
 
 
 ####################
@@ -210,20 +214,18 @@ names(trait.vector) <- as.character(row.names(tempfile))
 tree.ploidy <- treedata(tree.reduced, trait.vector)$phy
 res <- FISSE.binary(tree.reduced, trait.vector)
 
-# Ploidy according to chromosomes, follows above
+# Ploidy (based on chromosomes)
 # requires binary so we focus on diploid vs. tetraploids
 tempfile = read.csv("chromosomes_cleaned.txt", sep = "\t", row.names=1, header = FALSE)
 tempfile <- treedata(tree.reduced, tempfile)$data
 tempfile <- na.omit(tempfile)
 trait.vector = as.numeric(tempfile[,1])
 names(trait.vector) <- as.character(row.names(tempfile))
+trait.vector[trait.vector < 14] = 0
+trait.vector[trait.vector >= 14] = 1
 tree.ploidy <- treedata(tree.reduced, trait.vector)$phy
-trait.vector <- replace(trait.vector, trait.vector < 14, 0)
-trait.vector <- replace(trait.vector, trait.vector >= 14, 1)
-res <- FISSE.binary(tree.reduced, trait.vector)
+res <- FISSE.binary(tree.reduced, trait.vector, fail_tol = 50000)
 
-
-# For biogeography FiSSE some data wrangling was needed. See script niche_conservatism_ancestral_recon.r
 
 
 ####################
