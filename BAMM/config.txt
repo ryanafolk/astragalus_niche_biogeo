@@ -16,7 +16,7 @@
 modeltype = speciationextinction        
 # Specify "speciationextinction" or "trait" analysis
                                   
-treefile = /mnt/Heuheu/nitfix/astragalus/BAMM/astragalus.nodups.forcedultra.astragalusonly.tre
+treefile = /mnt/Heuheu/nitfix/astragalus/BAMM_taxadropped/astragalus.newtrim23.forceultra.tre
 # File name of the phylogenetic tree to be analyzed
 
 runInfoFilename = run_info_astragalus.txt
@@ -55,7 +55,7 @@ globalSamplingFraction = 0
 # The sampling probability. If useGlobalSamplingFraction = 0, this is ignored
 # and BAMM looks for a file name with species-specific sampling fractions
 
-sampleProbsFilename = sample_fractions.txt
+sampleProbsFilename = sample_fractions_taxadropped.txt
 # File name containing species-specific sampling fractions
 # Make sure the first line is the overall sampling fraction
 # Make sure there is no header
@@ -76,14 +76,15 @@ overwrite = 1
 
 expectedNumberOfShifts = 1.0
 
-lambdaInitPrior = 3.79264363728512
+lambdaInitPrior = 0.388281752982799
 
-lambdaShiftPrior = 1.00374206190078
+lambdaShiftPrior = 0.100374206190078
 
-muInitPrior = 0.379264363728512
+muInitPrior = 0.388281752982799
 
 #### End Prior block
 ######################
+
 
 # This was from online documentation example file
 lambdaIsTimeVariablePrior = 1
@@ -95,14 +96,14 @@ lambdaIsTimeVariablePrior = 1
 ################################################################################
 # These are mostly from online documentation example file 
 
-numberOfGenerations = 50000000
+numberOfGenerations = 500000000
 # Number of generations to perform MCMC simulation
 
 mcmcOutfile = mcmc_out.txt
 # File name for the MCMC output, which only includes summary information about
 # MCMC simulation (e.g., log-likelihoods, log-prior, number of processes)
 
-mcmcWriteFreq = 10000
+mcmcWriteFreq = 100000
 # Frequency in which to write the MCMC output to a file
 
 eventDataOutfile = event_data.txt
@@ -111,13 +112,13 @@ eventDataOutfile = event_data.txt
 # positions, marginal distributions etc can be reconstructed from this output.
 # See R package BAMMtools for working with this output
 
-eventDataWriteFreq = 10000
+eventDataWriteFreq = 100000
 # Frequency in which to write the event data to a file
 
-printFreq = 10000
+printFreq = 100000
 # Frequency in which to print MCMC status to the screen
 
-acceptanceResetFreq = 10000
+acceptanceResetFreq = 100000
 # Frequency in which to reset the acceptance rate calculation
 # The acceptance rate is output to both the MCMC data file and the screen
 
@@ -246,7 +247,6 @@ segLength = 0.02
 # If the value is greater than the branch length (e.g., you have a branch of
 # length < 0.5 in the preceding example) BAMM will not break the branch into
 # segments but use the mean rate across the entire branch.
-
 
 
 
