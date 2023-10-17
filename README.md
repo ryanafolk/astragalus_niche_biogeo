@@ -20,7 +20,7 @@ BioGeoBEARS directory. `biogeo_astragalus.R` is the analysis script, `BIOGEOCODI
 `niche_conservatism_ancestral_recon.r` is the analysis script (also includes niche conservatism tests), `traitDependent_functions.R` is a module from [https://github.com/macroevolution/fisse], *p*-values and other outputs are summarized in `niche_conserve.xlsx` and `MANOVA_results.xlsx`, and `figs` contains plotted figures.
 
 ## dated_trees
-Four trees after dating in TreePL (`.tre` extension). Naming convention: "localitymatched" is a version of the tree with taxa excluded that have no occurrence records. "newtrim23" indicates a version of the tree with taxa dropped per the main text and summarized in `trimlist.Mar23.txt`. `astragalus_treepl_config.txt` is the analysis file for TreePL. 
+Four trees after dating in TreePL (`.tre` extension). Naming convention: "localitymatched" is a version of the tree with taxa excluded that have no occurrence records. "newtrim23" indicates a version of the tree with taxa dropped per the main text and summarized in `trimlist.Mar23.txt`. The full list of dropped taxa is given in `complete.trimlist.csv`. `astragalus_treepl_config.txt` is the analysis file for TreePL. 
 
 ## DR_rates
 `tip_DR.csv` gives calculated DR rates; `figs` contains figures from outputs comparing DR to other data.
