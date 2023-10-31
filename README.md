@@ -39,4 +39,4 @@ CSVs representing raw occurrences.
 CSVs representing soil types, given both as full names and numerical coding (see `.xlsx` for number-name correspondence).
 
 ## tree_quality_control
-Miscellaneous QC. `HybPiper_test_stats.xlsx` contains standard HybPiper quality control output. `astragalus_treeQC.R` is an analysis script for plotting QC data on a tree; `astragalus.wBranchLenghts.outliersremoved.renamed.tre` is the plotting tree; `qc_astragalus_rename.csv` is slightly reformatted QC data for plotting. `figs` contains output figures.
+Miscellaneous QC. `HybPiper_test_stats.xlsx` contains standard HybPiper quality control output. `astragalus_treeQC.R` is an analysis script for plotting QC data on a tree; `astragalus.wBranchLenghts.outliersremoved.renamed.tre` is the plotting tree; `all_gene_trees.bs10.output.quartet.tre` has quartet scores plotted on the branches; `qc_astragalus_rename.csv` is slightly reformatted QC data for plotting. `figs` contains output figures.
