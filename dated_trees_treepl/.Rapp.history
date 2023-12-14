@@ -1,0 +1,90 @@
+median(5,6,7)
+median
+median(c(5,6,7))
+median(c(5,6))
+median(c(5.5,7))
+tree <- read.tree("astragalus.hybpiper.norogues.originalnames.nosections.optimize.calibrated.root.constraint.reltime.nodups.tre")
+library(phytools)
+tree <- read.tree("astragalus.hybpiper.norogues.originalnames.nosections.optimize.calibrated.no.root.constraint.noplatenames.nodups.localitymatched.newtrim23.tre")
+tree_bs10 <- read.tree("astragalus.genetreecladesfiltered.astral.dated.tre")
+tree_bs10 <- read.tree("astragalus.genetreecladesfiltered.astral.dated.tre")
+obj<-cophylo(tree, tree_bs10)
+tree_bs10 <- read.tree("astragalus.genetreecladesfiltered.astral.dated.tre")
+tree_bs10
+tree_bs10 <- read.tree("astragalus.genetreecladesfiltered.astral.dated.noplatelabels.tre")
+tree_bs10
+tree
+obj<-cophylo(tree, tree_bs10)
+plot(obj,type=c("cladogram","phylogram"),fsize=0.8,part=0.48,#
+  mar=c(0.1,0.1,2.1,0.1),pts=FALSE,lwd=2,link.type="curved")#
+left<-get("last_plot.cophylo",envir=.PlotPhyloEnv)[[1]]#
+ind<-2:Nnode(obj$trees[[1]])+Ntip(obj$trees[[1]])#
+points(left$xx[ind],left$yy[ind],#
+  cex=2*as.numeric(obj$trees[[1]]$node.label[2:Nnode(obj$trees[[1]])]),#
+  pch=16,col=make.transparent(palette()[4],0.75))#
+right<-get("last_plot.cophylo",envir=.PlotPhyloEnv)[[2]]#
+ind<-2:Nnode(obj$trees[[2]])+Ntip(obj$trees[[2]])#
+points(right$xx[ind],right$yy[ind],#
+  cex=2*as.numeric(obj$trees[[2]]$node.label[2:Nnode(obj$trees[[2]])]),#
+  pch=16,col=make.transparent(palette()[4],0.75))#
+legend("bottomleft",#
+  legend=paste(seq(20,100,by=20),"%",sep=""),#
+  pt.cex=seq(0.4,2,by=0.4),#
+  pch=16,col=make.transparent(palette()[4],0.75),#
+  title="bootstrap support",bty="n")#
+mtext("a) Maximum Parsimony cladogram",at=-0.5,adj=0)#
+mtext("b) Maximum Likelihood phylogram",at=0.02,adj=0)
+plot(obj,type=c("cladogram","phylogram"),fsize=0.8,part=0.48,#
+  mar=c(0.1,0.1,2.1,0.1),pts=FALSE,lwd=2,link.type="curved")#
+left<-get("last_plot.cophylo",envir=.PlotPhyloEnv)[[1]]#
+ind<-2:Nnode(obj$trees[[1]])+Ntip(obj$trees[[1]])#
+points(left$xx[ind],left$yy[ind],#
+  cex=2*as.numeric(obj$trees[[1]]$node.label[2:Nnode(obj$trees[[1]])]),#
+  pch=16,col=make.transparent(palette()[4],0.75))#
+right<-get("last_plot.cophylo",envir=.PlotPhyloEnv)[[2]]#
+ind<-2:Nnode(obj$trees[[2]])+Ntip(obj$trees[[2]])#
+points(right$xx[ind],right$yy[ind],#
+  cex=2*as.numeric(obj$trees[[2]]$node.label[2:Nnode(obj$trees[[2]])]),#
+  pch=16,col=make.transparent(palette()[4],0.75))#
+legend("bottomleft",#
+  legend=paste(seq(20,100,by=20),"%",sep=""),#
+  pt.cex=seq(0.4,2,by=0.4),#
+  pch=16,col=make.transparent(palette()[4],0.75),#
+  title="bootstrap support",bty="n")#
+mtext("a) Maximum Parsimony cladogram",at=-0.5,adj=0)#
+mtext("b) Maximum Likelihood phylogram",at=0.02,adj=0)
+obj
+plot(obj,type=c("cladogram","phylogram"),fsize=0.8,part=0.48,#
+  mar=c(0.1,0.1,2.1,0.1),pts=FALSE,lwd=2,link.type="curved")#
+left<-get("last_plot.cophylo",envir=.PlotPhyloEnv)[[1]]#
+ind<-2:Nnode(obj$trees[[1]])+Ntip(obj$trees[[1]])#
+points(left$xx[ind],left$yy[ind],#
+  cex=2*as.numeric(obj$trees[[1]]$node.label[2:Nnode(obj$trees[[1]])]),#
+  pch=16,col=make.transparent(palette()[4],0.75))#
+right<-get("last_plot.cophylo",envir=.PlotPhyloEnv)[[2]]#
+ind<-2:Nnode(obj$trees[[2]])+Ntip(obj$trees[[2]])#
+points(right$xx[ind],right$yy[ind],#
+  cex=2*as.numeric(obj$trees[[2]]$node.label[2:Nnode(obj$trees[[2]])]),#
+  pch=16,col=make.transparent(palette()[4],0.75))#
+legend("bottomleft",#
+  legend=paste(seq(20,100,by=20),"%",sep=""),#
+  pt.cex=seq(0.4,2,by=0.4),#
+  pch=16,col=make.transparent(palette()[4],0.75),#
+  title="bootstrap support",bty="n")#
+mtext("a) Maximum Parsimony cladogram",at=-0.5,adj=0)#
+mtext("b) Maximum Likelihood phylogram",at=0.02,adj=0)plot(obj,type=c("cladogram","phylogram"),fsize=0.8,part=0.48,#
+  mar=c(0.1,0.1,2.1,0.1),pts=FALSE,lwd=2,link.type="curved")
+plot(obj,type=c("cladogram","phylogram"),fsize=0.8,part=0.48,#
+  mar=c(0.1,0.1,2.1,0.1),pts=FALSE,lwd=2,link.type="curved")
+plot(obj,type=c("cladogram","phylogram"),fsize=0.8,part=0.48,#
+  mar=c(0.1,0.1,2.1,0.1),pts=FALSE,lwd=2,link.type="curved")left<-get("last_plot.cophylo",envir=.PlotPhyloEnv)[[1]]
+left<-get("last_plot.cophylo",envir=.PlotPhyloEnv)[[1]]
+left<-get(last_plot.cophylo,envir=.PlotPhyloEnv)[[1]]
+rooted.ml_tree <- read.tree("astragalus.genetreecladesfiltered.astral.dated.noplatelabels.tre")
+rooted.mp_tree <- read.tree("astragalus.hybpiper.norogues.originalnames.nosections.optimize.calibrated.no.root.constraint.noplatenames.nodups.localitymatched.newtrim23.tre")
+rooted.mp_tree <- read.tree("astragalus.hybpiper.norogues.originalnames.nosections.optimize.calibrated.no.root.constraint.noplatenames.nodups.localitymatched.newtrim23.tre")
+obj<-cophylo(rooted.mp_tree,rooted.ml_tree)
+plot(obj,type=c("cladogram","phylogram"),fsize=0.8,part=0.48,#
+  mar=c(0.1,0.1,2.1,0.1),pts=FALSE,lwd=2,link.type="curved")
+plot(obj,fsize=0.8,part=0.48,#
+  mar=c(0.1,0.1,2.1,0.1),pts=FALSE,lwd=2,link.type="curved")

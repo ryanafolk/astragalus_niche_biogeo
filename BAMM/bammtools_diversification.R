@@ -137,14 +137,6 @@ trait.vector = tempfile[,1]
 names(trait.vector) <- row.names(tempfile)
 soil_vs_diversification = traitDependentBAMM(edata.subset, trait.vector, 1000, rate = "net diversification", return.full = FALSE, method = "kruskal", logrates = TRUE, two.tailed = TRUE, traitorder = NA, nthreads = 4) 
 
-# Ploidy
-tempfile = read.csv("ploidy.call.renamed.txt", sep = "\t", row.names=1, header = FALSE)
-tempfile <- treedata(tree.diversification.ladderized, tempfile)$data
-trait.vector = tempfile[,1]
-names(trait.vector) <- row.names(tempfile)
-edata.subset <- subtreeBAMM(edata_diversification_ladderized, tips = names(trait.vector))
-ploidy_vs_diversification = traitDependentBAMM(edata.subset, trait.vector, 1000, rate = "net diversification", return.full = FALSE, method = "kruskal", logrates = TRUE, two.tailed = TRUE, traitorder = NA, nthreads = 4) 
-
 # Ploidy (based on chromosomes)
 tempfile = read.csv("chromosomes_cleaned.txt", sep = "\t", row.names=1, header = FALSE)
 tempfile <- treedata(tree.diversification.ladderized, tempfile)$data
@@ -202,16 +194,6 @@ names(trait.vector) <- as.character(row.names(tempfile))
 
 library(phangorn)
 library(diversitree)
-res <- FISSE.binary(tree.reduced, trait.vector)
-
-# Ploidy
-# requires binary so we focus on diploid vs. tetraploids
-tempfile = read.csv("ploidy.call.renamed.binary.txt", sep = "\t", row.names=1, header = FALSE)
-tempfile <- treedata(tree.reduced, tempfile)$data
-tempfile <- na.omit(tempfile)
-trait.vector = as.numeric(tempfile[,1])
-names(trait.vector) <- as.character(row.names(tempfile))
-tree.ploidy <- treedata(tree.reduced, trait.vector)$phy
 res <- FISSE.binary(tree.reduced, trait.vector)
 
 # Ploidy (based on chromosomes)
