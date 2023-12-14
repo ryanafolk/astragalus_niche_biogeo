@@ -2,7 +2,7 @@
 Analyses for the paper entitled, "Anatomy of a mega-radiation: Biogeography and niche evolution in *Astragalus*". Folders are as follows in subsections.
 
 ## all_trees_undated
-Trees before dating, branches in coalescent units. `astragalus.hybpiper.astral.scored.sectionnames.afterprunning.tre` has uncorrected names (conformant to the NitFix taxonomy prior to miscellaneous changes) and `astragalus.hybpiper.astral.scored.sectionnames.afterprunning.taxonomycorrection.tre` has corrected names. `figs` contains PDFs of plotted trees.
+Trees before dating, branches in coalescent units. `astragalus.hybpiper.astral.scored.sectionnames.afterprunning.tre` has uncorrected names (conformant to the NitFix taxonomy prior to miscellaneous changes) and `astragalus.hybpiper.astral.scored.sectionnames.afterprunning.taxonomycorrection.tre` has corrected names. `figs` contains PDFs of plotted trees. `bs10` indicates the result from an additional filtering step on the gene trees.
 
 ## BAMM
 Scripts, input, and output for BAMM. `Tree_check.R` is basic input tree and prior checking (output `myPriors.txt`). `config.txt` gives settings for the BAMM run. `bammtools_diversification.R` is postprocessing of BAMM results in BAMMtools. `sample_fractions.txt` is the file that encodes missing taxon proportions. `chromosomes_raw.txt` gives input chromosome data, recoded in file `chromosomes_cleaned.txt` per the Methods section. Otherwise all `.csv` files are input data for trait-associated diversification and all `.svg` and `.pdf` files in folder `figs`are figures from the output.
@@ -20,7 +20,7 @@ BioGeoBEARS directory. `biogeo_astragalus.R` is the analysis script, `BIOGEOCODI
 `niche_conservatism_ancestral_recon.r` is the analysis script (also includes niche conservatism tests), `traitDependent_functions.R` is a module from [https://github.com/macroevolution/fisse], *p*-values and other outputs are summarized in `niche_conserve.xlsx` and `MANOVA_results.xlsx`, and `figs` contains plotted figures.
 
 ## dated_trees
-Four trees after dating in TreePL (`.tre` extension). Naming convention: "localitymatched" is a version of the tree with taxa excluded that have no occurrence records. "newtrim23" indicates a version of the tree with taxa dropped per the main text and summarized in `trimlist.Mar23.txt`. `astragalus_treepl_config.txt` is the analysis file for TreePL. 
+Four trees after dating in TreePL (`.tre` extension). Naming convention: "localitymatched" is a version of the tree with taxa excluded that have no occurrence records. "newtrim23" indicates a version of the tree with taxa dropped per the main text and summarized in `trimlist.Mar23.txt`. The full list of dropped taxa is given in `complete.trimlist.csv`. `astragalus_treepl_config.txt` is the analysis file for TreePL. 
 
 ## DR_rates
 `tip_DR.csv` gives calculated DR rates; `figs` contains figures from outputs comparing DR to other data.
@@ -39,4 +39,4 @@ CSVs representing raw occurrences.
 CSVs representing soil types, given both as full names and numerical coding (see `.xlsx` for number-name correspondence).
 
 ## tree_quality_control
-Miscellaneous QC. `HybPiper_test_stats.xlsx` contains standard HybPiper quality control output. `astragalus_treeQC.R` is an analysis script for plotting QC data on a tree; `astragalus.wBranchLenghts.outliersremoved.renamed.tre` is the plotting tree; `qc_astragalus_rename.csv` is slightly reformatted QC data for plotting. `figs` contains output figures.
+Miscellaneous QC. `HybPiper_test_stats.xlsx` contains standard HybPiper quality control output. `astragalus_treeQC.R` is an analysis script for plotting QC data on a tree; `astragalus.wBranchLenghts.outliersremoved.renamed.tre` is the plotting tree; `all_gene_trees.bs10.output.quartet.tre` has quartet scores plotted on the branches; `qc_astragalus_rename.csv` is slightly reformatted QC data for plotting. `figs` contains output figures.
